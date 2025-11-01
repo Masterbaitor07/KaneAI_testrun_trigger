@@ -12,8 +12,8 @@ jobs:
         run: |
           echo "Triggering sanity tests on LambdaTest"
 
-          # Encode username:accessKey in Base64
-          token=$(echo -n "${{ secrets.LT_USERNAME }}:${{ secrets.LT_ACCESS_KEY }}" | base64)
+          # Hardcoded Base64 encode of username:accessKey
+          token=$(echo -n "anshulr:LT_Vafdmse65NnAXvVWbRuR6d0Z9Qj7xq1e9AUI2qpbgK8vamb" | base64)
 
           response=$(curl --location 'https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute' \
           --header "Content-Type: application/json" \
@@ -21,7 +21,7 @@ jobs:
           --data '{
             "test_run_id": "01K90AXSSG9MJ076RG6RP9FZPN",
             "concurrency": 1,
-            "title": "TR-Anshul"
+            "title": "TR-Anshul_8"
           }')
 
           echo "Response: $response"
