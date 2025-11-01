@@ -1,4 +1,4 @@
-name: Run Sanity Tests on LambdaTest.
+name: Run Sanity Tests on LambdaTest
 
 on:
   workflow_dispatch:
@@ -9,15 +9,19 @@ jobs:
 
     steps:
       - name: Trigger Sanity Test on LambdaTest
-        id: trigger-test
         run: |
           echo "Triggering sanity tests on LambdaTest"
+
+          # Encode username:accessKey in Base64
+          token=$(echo -n "${{ secrets.LT_USERNAME }}:${{ secrets.LT_ACCESS_KEY }}" | base64)
+
           response=$(curl --location 'https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute' \
-          --header 'Content-Type: application/json' \
-          --header 'Authorization: Basic YW5zaHVscgpMVF9WYWZkbXNlNjVObkFYdlZXYlJ1UjZkMFo5UWo3eHExZTlBVUkycXBiZ0s4dmFtYgo=' \
+          --header "Content-Type: application/json" \
+          --header "Authorization: Basic $token" \
           --data '{
             "test_run_id": "01K90AXSSG9MJ076RG6RP9FZPN",
             "concurrency": 1,
             "title": "TR-Anshul"
           }')
+
           echo "Response: $response"
