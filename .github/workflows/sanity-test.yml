@@ -14,7 +14,7 @@ jobs:
           echo "Triggering sanity tests on LambdaTest"
           response=$(curl --location 'https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute' \
           --header 'Content-Type: application/json' \
-          --header 'Authorization: Basic YW5zaHVscjpMVF9WYWZkbXNlNjVObkFYdlZXYlJ1UjZkMFo5UWoxeHFxMWU5QVVJMnFwYmdLOHZhbWI=' \
+          --header 'Authorization: Basic YW5zaHVscgpMVF9WYWZkbXNlNjVObkFYdlZXYlJ1UjZkMFo5UWo3eHExZTlBVUkycXBiZ0s4dmFtYgo=' \
           --data '{
             "test_run_id": "01K90AXSSG9MJ076RG6RP9FZPN",
             "concurrency": 1,
