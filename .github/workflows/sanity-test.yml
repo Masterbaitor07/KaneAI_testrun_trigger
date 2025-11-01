@@ -54,7 +54,7 @@ jobs:
             exit 1
           fi
 
-          echo "Sanity tests passed successfully."
+          echo "Sanity tests passed successfully"
 
         env:
           LT_USERNAME: ${{ secrets.LT_USERNAME }}
