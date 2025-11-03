@@ -16,9 +16,9 @@ jobs:
           --header 'Content-Type: application/json' \
           --header 'Authorization: Basic YW5zaHVscjpMVF9WYWZkbXNlNjVObkFYdlZXYlJ1UjZkMFo5UWo3eHExZTlBVUkycXBiZ0s4dmFtYg==' \
           --data '{
-            "test_run_id": "01K90AXSSG9MJ076RG6RP9FZPN",
+            "test_run_id": "01K94QG06P5PBMX3V926X6TFZR",
             "concurrency": 1,
-            "title": "TR-Anshul"
+            "title": "Teachfx"
           }')
 
           echo "Response: $response"
