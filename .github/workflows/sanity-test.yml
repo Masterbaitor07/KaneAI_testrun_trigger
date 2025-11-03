@@ -8,6 +8,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Upload App to LambdaTest (Real Device)
+        run: |
+          echo "Uploading APK to LambdaTest"
+
+          upload_response=$(curl --location 'https://manual-api.lambdatest.com/app/upload/realDevice' \
+          --header 'Authorization: Basic YW5zaHVscjpMVF9WYWZkbXNlNjVObkFYdlZXYlJ1UjZkMFo5UWo3eHExZTlBVUkycXBiZ0s4dmFtYg==' \
+          --form 'appFile=@"/C:/Users/anshulr/Downloads/proverbialandroidapk-1760953568722.apk"' \
+          --form 'custom_id="qwerty"')
+
+          echo "Upload Response: $upload_response"
+      
+      - name: Wait 5 seconds
+        run: |
+          echo "Waiting 5 seconds to allow upload to complete"
+          sleep 5
+      
       - name: Trigger Sanity Test on LambdaTest
         run: |
           echo "Triggering sanity tests on LambdaTest"
@@ -18,7 +34,8 @@ jobs:
           --data '{
             "test_run_id": "01K94QG06P5PBMX3V926X6TFZR",
             "concurrency": 1,
-            "title": "Teachfx"
+            "title": "Teachfx",
+            "custom_id": "qwerty"
           }')
 
           echo "Response: $response"
