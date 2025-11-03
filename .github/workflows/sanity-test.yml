@@ -10,12 +10,13 @@ jobs:
     steps:
       - name: Upload App to LambdaTest (Real Device)
         run: |
-          echo "Uploading APK to LambdaTest"
+          echo "Uploading App using download URL to LambdaTest"
 
           upload_response=$(curl --location 'https://manual-api.lambdatest.com/app/upload/realDevice' \
           --header 'Authorization: Basic YW5zaHVscjpMVF9WYWZkbXNlNjVObkFYdlZXYlJ1UjZkMFo5UWo3eHExZTlBVUkycXBiZ0s4dmFtYg==' \
-          --form 'appFile=@"/C:/Users/anshulr/Downloads/proverbialandroidapk-1760953568722.apk"' \
-          --form 'custom_id="qwerty"')
+          --form 'url="https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk"' \
+          --form 'name="Proverbial_App"' \
+          --form 'custom_id="anshul"')
 
           echo "Upload Response: $upload_response"
       
@@ -35,7 +36,7 @@ jobs:
             "test_run_id": "01K94QG06P5PBMX3V926X6TFZR",
             "concurrency": 1,
             "title": "Teachfx",
-            "custom_id": "qwerty"
+            "custom_id": "anshul"
           }')
 
           echo "Response: $response"
